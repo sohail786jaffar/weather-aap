@@ -44,7 +44,8 @@ function getCurrentLocationWeather() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        const { latitude, longitude } = position.coords;
+        const latitude = Math.round(position.coords.latitude);
+        const longitude = Math.round(position.coords.longitude);
         getWeatherData(latitude, longitude);
       },
       (error) => {
@@ -64,11 +65,13 @@ function getCoordinates(city) {
   )
     .then((response) => response.json())
     .then((data) => {
+        console.log(data);
       if (data.length === 0) {
         alert("City not found");
         return;
       }
-      const { lat, lon } = data[0];
+      const lat = Math.round(data[0].lat);
+      const lon = Math.round(data[0].lon);
       getWeatherData(lat, lon);
     });
 }
@@ -99,27 +102,29 @@ function showWeatherData(data) {
   let currentCity = data.timezone;
 
   timezone.innerHTML = currentCity;
-  countryEl.innerHTML = data.lat + "N " + data.lon + "E";
+  countryEl.innerHTML = Math.round(data.lat) + "N " + Math.round(data.lon) + "E";
 
-  const currentTemp = data.current.temp;
-  const highTemp = data.daily[0].temp.max;
-  const lowTemp = data.daily[0].temp.min;
+  const currentTemp = Math.round(data.current.temp);
+  const highTemp = Math.round(data.daily[0].temp.max);
+  const lowTemp = Math.round(data.daily[0].temp.min);
+
+
   document.querySelector('#current-temp-c').innerHTML=`
-  <div class="today-weather">current temperature:${currentTemp}</div>
-  <div class="high-low"${highTemp} - ${lowTemp}</div>`
+  <div class="today-weather">current temperature:${currentTemp} &#176;C</div>
+  <div class="high-low">High ${highTemp} &#176;C - Low ${lowTemp} &#176;C</div>`
 
   currentWeatherItemsEl.innerHTML = `
     <div class="weather-item">
         <div>Humidity</div>
-        <div>${humidity}%</div>
+        <div>${Math.round(humidity)}%</div>
     </div>
     <div class="weather-item">
         <div>Pressure</div>
-        <div>${pressure} hPa</div>
+        <div>${Math.round(pressure)} hPa</div>
     </div>
     <div class="weather-item">
         <div>Wind Speed</div>
-        <div>${wind_speed} m/s</div>
+        <div>${Math.round(wind_speed)} m/s</div>
     </div>
     <div class="weather-item">
         <div>Feels Like</div>
@@ -141,7 +146,7 @@ function showWeatherData(data) {
   displayHourlyWeather(data.hourly, timezoneOffset);
   displayDailyWeather(data.daily, timezoneOffset);
 
-  updateTemperature(currentTemp, highTemp, lowTemp);
+  // updateTemperature(currentTemp, highTemp, lowTemp);
 }
 
 function displayHourlyWeather(hourlyData, timezoneOffset) {
@@ -159,7 +164,7 @@ function displayHourlyWeather(hourlyData, timezoneOffset) {
             <img src="http://openweathermap.org/img/wn/${
               hour.weather[0].icon
             }@2x.png" alt="weather icon" class="w-icon">
-            <div class="temp">Temp - ${hour.temp}&#176;C</div>
+            <div class="h-temp">Temp - ${Math.round(hour.temp)}&#176;C</div>
         </div>`;
   });
   currentTempEl.innerHTML = hourlyForecast;
@@ -181,8 +186,8 @@ function displayDailyWeather(dailyData, timezoneOffset) {
             <img src="http://openweathermap.org/img/wn/${
               day.weather[0].icon
             }@2x.png" alt="weather icon" class="w-icon">
-            <div class="temp">Night - ${day.temp.night}&#176;C</div>
-            <div class="temp">Day - ${day.temp.day}&#176;C</div>
+            <div class="temp">Night - ${Math.round(day.temp.night)}&#176;C</div>
+            <div class="temp">Day - ${Math.round(day.temp.day)}&#176;C</div>
             <button class="hourly-button">Hourly Info</button>
         </div>`;
   });
@@ -219,15 +224,11 @@ function displaySelectedDayWeather(dayData, timezoneOffset) {
             <img src="http://openweathermap.org/img/wn/${
               hour.weather[0].icon
             }@2x.png" alt="weather icon" class="w-icon">
-            <div class="temp">Temp - ${hour.temp.day}&#176;C</div>
+            <div class="temp">Temp - ${Math.round(hour.temp.day)}&#176;C</div>
         </div>`;
   });
 
   currentTempEl.innerHTML = hourlyForecast;
-}
-
-function updateTemperature(currentTemp, highTemp, lowTemp) {
-  currentTempEl.innerHTML = `Current Temp: ${currentTemp}&#176;C <br> High: ${highTemp}&#176;C / Low: ${lowTemp}&#176;C`;
 }
 
 setInterval(() => {
