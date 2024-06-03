@@ -5,6 +5,9 @@ const timezone = document.getElementById("time-zone");
 const countryEl = document.getElementById("country");
 const weatherForecastEl = document.getElementById("weather-forecast");
 const currentTempEl = document.getElementById("current-temp");
+const searchCity = document.querySelector("#city-input").value;
+
+document.querySelector(".city").innerHTML = searchCity;
 
 const days = [
   "Sunday",
@@ -65,7 +68,7 @@ function getCoordinates(city) {
   )
     .then((response) => response.json())
     .then((data) => {
-        console.log(data);
+      console.log(data);
       if (data.length === 0) {
         alert("City not found");
         return;
@@ -97,21 +100,21 @@ function showWeatherData(data) {
     uvi,
     dew_point,
   } = data.current;
-  console.log(data.current)
+  console.log(data.current);
   let timezoneOffset = data.timezone_offset;
   let currentCity = data.timezone;
 
   timezone.innerHTML = currentCity;
-  countryEl.innerHTML = Math.round(data.lat) + "N " + Math.round(data.lon) + "E";
+  countryEl.innerHTML =
+    Math.round(data.lat) + "N " + Math.round(data.lon) + "E";
 
   const currentTemp = Math.round(data.current.temp);
   const highTemp = Math.round(data.daily[0].temp.max);
   const lowTemp = Math.round(data.daily[0].temp.min);
 
-
-  document.querySelector('#current-temp-c').innerHTML=`
+  document.querySelector("#current-temp-c").innerHTML = `
   <div class="today-weather">current temperature:${currentTemp} &#176;C</div>
-  <div class="high-low">High ${highTemp} &#176;C - Low ${lowTemp} &#176;C</div>`
+  <div class="high-low">High ${highTemp} &#176;C - Low ${lowTemp} &#176;C</div>`;
 
   currentWeatherItemsEl.innerHTML = `
     <div class="weather-item">

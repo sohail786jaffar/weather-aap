@@ -1,161 +1,167 @@
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
 body {
-    font-family: Arial, sans-serif;
-    /* background: #1ed42d; */
-    background-image: url(https://png.pngtree.com/thumb_back/fw800/background/20231103/pngtree-awe-inspiring-clouds-captivating-texture-wallpaper-reveals-a-panoramic-view-of-image_13740763.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: #000000;
-    height: fit-content;
+  font-family: Arial, sans-serif;
+  /* background: #1ed42d; */
+  background-image: url(https://png.pngtree.com/thumb_back/fw800/background/20231103/pngtree-awe-inspiring-clouds-captivating-texture-wallpaper-reveals-a-panoramic-view-of-image_13740763.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #000000;
+  height: fit-content;
 }
 ::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: #00B4D8;
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #03045E;
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    filter: brightness(1.3);
-    cursor: pointer;
-  }
-  
+  width: 5px;
+  height: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #00b4d8;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #03045e;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  filter: brightness(1.3);
+  cursor: pointer;
+}
 
 .main {
-    max-width: 600px;
-    margin: auto;
-    padding: 20px;
-    border: 2px solid #060606;
-    border-radius: 29px;
-    background: #CAF0F8;
-    backdrop-filter: blur(70px);
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  border: 2px solid #060606;
+  border-radius: 29px;
+  background: #caf0f8;
+  backdrop-filter: blur(70px);
 }
-.timeAndRegion{
-    display: flex;
-    justify-content: space-between;
+.timeAndRegion {
+  display: flex;
+  justify-content: space-between;
 }
-.timedate{
-    display: flex;
-    flex-direction: column;
-    color: #03045E;
+.timedate {
+  display: flex;
+  flex-direction: column;
+  color: #03045e;
 }
-#timedetail{
-    display: flex;
-    gap: 1rem;
-    height: fit-content;
-    /* color: #333; */
-    
+#timedetail {
+  display: flex;
+  gap: 1rem;
+  height: fit-content;
+  /* color: #333; */
 }
-#time{
-    font-size: 4rem;
-    font-weight: bolder;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
-    margin: 0;
-    padding: 0;
-    height: fit-content;
+#time {
+  font-size: 4rem;
+  font-weight: bolder;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  margin: 0;
+  padding: 0;
+  height: fit-content;
 }
-#amPm{
-    align-self: flex-end;
-    font-size: 2rem;
-    font-weight: bold;
+#amPm {
+  align-self: flex-end;
+  font-size: 2rem;
+  font-weight: bold;
 }
-#date{
-    position: relative;
-    top: -20px;
-    left: 5px;
+#date {
+  position: relative;
+  top: -20px;
+  left: 5px;
 }
 .input-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
 #city-input {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 15px 0 0 15px;
-    width: 280px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 15px 0 0 15px;
+  width: 280px;
 }
 
 #search-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    background: #0077B6;
-    color: #fff;
-    cursor: pointer;
-    border-radius: 0px 15px 15px 0px;}
-
-#search-button:hover {
-    background: #0056b3;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  background: #0077b6;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 0px 15px 15px 0px;
 }
 
-.weather-item, .weather-forecast-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
+#search-button:hover {
+  background: #0056b3;
+}
+
+.weather-item,
+.weather-forecast-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
 }
 
 .weather-forecast-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 200px;
-    border: 2px solid gray;
-    background-color: #90E0EF;
-    border-radius: 15px;
-    box-shadow: 1px 1px 1px 1px #0077B6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+  border: 2px solid gray;
+  background-color: #90e0ef;
+  border-radius: 15px;
+  box-shadow: 1px 1px 1px 1px #0077b6;
 }
 
-#weather-forecast{
-    display: flex;
-    overflow: auto;
-    gap: 1rem;
-    padding: 13px;
-    margin: 2rem 00 2rem 0;
-
-
+#weather-forecast {
+  display: flex;
+  overflow: auto;
+  gap: 1rem;
+  padding: 13px;
+  margin: 1rem 00 2rem 0;
 }
-.weather-forecast-item > .temp{
-    text-wrap: nowrap;
+.weather-forecast-item > .temp {
+  text-wrap: nowrap;
 }
 .w-icon {
-    width: 50px;
+  width: 50px;
 }
 
 #current-temp {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    overflow: auto;
-    gap: 1rem;
-    padding: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: auto;
+  gap: 1rem;
+  padding: 13px;
 }
-.hourly-button{
-    border-radius: 5px;
-    padding: 5px 5px;
-    margin-top: 4px;
-    background: #0077B6;
-    color: white;
-    border: none;
+.hourly-button {
+  border-radius: 5px;
+  padding: 5px 5px;
+  margin-top: 4px;
+  background: #0077b6;
+  color: white;
+  border: none;
 }
-#current-temp-c{
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
+#current-temp-c {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding-left: 7px;
 }
 /* #current-weather-items {
     display: flex;
 } */
+#time-zone,
+#country {
+  display: none;
+}
+.para {
+  color: #03045e;
+}
