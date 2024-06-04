@@ -5,9 +5,9 @@ const timezone = document.getElementById("time-zone");
 const countryEl = document.getElementById("country");
 const weatherForecastEl = document.getElementById("weather-forecast");
 const currentTempEl = document.getElementById("current-temp");
-const searchCity = document.querySelector("#city-input").value;
+// const searchCity = document.querySelector("#city-input").value;
 
-document.querySelector(".city").innerHTML = searchCity;
+// document.querySelector(".city").innerHTML = searchCity;
 
 const days = [
   "Sunday",
@@ -37,6 +37,7 @@ const API_KEY = "49cc8c821cd2aff9af04c9f98c36eb74";
 
 document.getElementById("search-button").addEventListener("click", () => {
   const city = document.getElementById("city-input").value;
+  document.querySelector(".city").innerHTML = city;
   getCoordinates(city);
 });
 

@@ -165,3 +165,10 @@ body {
 .para {
   color: #03045e;
 }
+.city{
+  color: #03045e;
+  font-size: 2rem;
+  text-transform: uppercase;
+  position: relative;
+  top: 6px;
+}
