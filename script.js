@@ -6,6 +6,7 @@ const countryEl = document.getElementById("country");
 const weatherForecastEl = document.getElementById("weather-forecast");
 const currentTempEl = document.getElementById("current-temp");
 // const searchCity = document.querySelector("#city-input").value;
+// searchCity.innerHTML="karachi";
 
 // document.querySelector(".city").innerHTML = searchCity;
 
@@ -34,11 +35,16 @@ const months = [
 ];
 
 const API_KEY = "49cc8c821cd2aff9af04c9f98c36eb74";
-
-document.getElementById("search-button").addEventListener("click", () => {
+const citySearch = ()=>{
   const city = document.getElementById("city-input").value;
   document.querySelector(".city").innerHTML = city;
   getCoordinates(city);
+}
+document.getElementById("search-button").addEventListener("click", () => {
+  citySearch();
+  // const city = document.getElementById("city-input").value;
+  // document.querySelector(".city").innerHTML = city;
+  // getCoordinates(city);
 });
 
 // Get weather for current location by default
@@ -74,8 +80,8 @@ function getCoordinates(city) {
         alert("City not found");
         return;
       }
-      const lat = Math.round(data[0].lat);
-      const lon = Math.round(data[0].lon);
+      const lat = data[0].lat;
+      const lon = data[0].lon;
       getWeatherData(lat, lon);
     });
 }
@@ -252,3 +258,9 @@ setInterval(() => {
   document.querySelector("#amPm").innerHTML = ampm;
   dateEl.innerHTML = days[day] + ", " + date + " " + months[month];
 }, 1000);
+
+document.addEventListener("keyup" , (event) => {
+  if (event.key === "Enter") {
+    citySearch();
+  }
+})
